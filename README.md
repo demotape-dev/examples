@@ -1,6 +1,10 @@
 # DemoTape Examples
 
-Run real apps locally and share them with [DemoTape](https://demotape.dev). Each example is a working project you can run and share in under a minute.
+**DemoTape gives developers a public URL for their localhost app — in one command.** No deploy, no staging server, no Docker push. Run `demotape` in your project directory, and your local dev server gets a shareable link that anyone can open in their browser. Cookies, WebSockets, multi-port setups, and hot reload all work out of the box.
+
+**Every viewer session is recorded.** DemoTape captures clicks, scrolls, console errors, and network requests as they happen. When a client says "it broke," you don't have to guess — you replay the exact session and see what they saw, down to the pixel. Sessions are viewable live or on-demand from your dashboard.
+
+**These examples prove it works with real stacks.** Each project below is a complete app you can run and share in under a minute. They cover authentication flows, WebSockets, SSR frameworks, multi-service Docker setups, and more. Pick the one closest to your stack, run it, and see DemoTape in action before using it on your own projects.
 
 ## Start here (30 seconds)
 
@@ -24,6 +28,7 @@ Each example answers a specific question developers have before trying DemoTape.
 | [location-rewrite](demotape-example-location-rewrite) | 302 redirects and Location headers work, client-side routing preserved |
 | [auth-flow](demotape-example-auth-flow) | Login, JWT, protected routes all work behind proxy |
 | [docker-compose](demotape-example-docker-compose) | Multi-container Docker environments work (React + Express + Postgres + Worker) |
+| [microservices](demotape-example-microservices) | 4 services (React + API + WebSocket + Worker) shared through one URL |
 | [realtime](demotape-example-realtime) | WebSocket connections survive proxying, live updates work |
 | [debugging-failures](demotape-example-debugging-failures) | Session replay captures exact failure sequences — flaky bugs become reproducible |
 
@@ -50,14 +55,18 @@ Each example answers a specific question developers have before trying DemoTape.
 |----------|---------|
 | "Will cookies/auth break?" | cookie-session, auth-flow |
 | "Will redirects work?" | location-rewrite |
-| "Will multi-service setups work?" | docker-compose |
+| "Will multi-service setups work?" | docker-compose, microservices |
 | "Is this actually useful?" | debugging-failures, client-demo |
 | "Does it support my stack?" | nextjs, sveltekit, nuxt, api-only |
 | "Will WebSockets work?" | realtime |
 | "Can I keep developing while sharing?" | hot-reload |
 
-## About DemoTape
+## Get started
 
-DemoTape lets you share a localhost app with others without deploying it. It supports multi-port development environments, preserves cookies and headers, and provides session replay so you can see exactly what users did.
+```bash
+npm install -g @demotape.dev/cli
+demotape login
+cd your-project && demotape
+```
 
-Learn more at [demotape.dev](https://demotape.dev) or read the [docs](https://demotape.dev/docs).
+Learn more at [demotape.dev](https://demotape.dev).

@@ -18,7 +18,11 @@ app.post("/api/submit", (req, res) => {
   // 30% chance: 500 error
   if (roll < 0.3) {
     console.log("[api] Returning 500 (simulated flaky failure)");
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({
+      error: "Database connection lost",
+      details: "Connection to primary replica timed out after 5000ms. Retries exhausted.",
+      code: "ECONNRESET",
+    });
   }
 
   // 20% chance: 3-second delay then success

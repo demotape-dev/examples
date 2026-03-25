@@ -132,7 +132,7 @@ export default function App() {
       <header>
         <h1>Debugging Failures Demo</h1>
         <p className="subtitle">
-          This form has intentional bugs. Submit it a few times and watch the failures.
+          This app has intentional bugs. Try the form and watch DemoTape capture every failure.
         </p>
       </header>
 
@@ -168,6 +168,9 @@ export default function App() {
         <button type="submit" className="submit-btn">
           {loading ? "Submitting..." : "Submit"}
         </button>
+        <p className="hint">
+          The API fails ~30% of the time. In the session viewer, filter for "500" to find the failed request and inspect the response body.
+        </p>
       </form>
 
       {submitError && (
@@ -189,6 +192,7 @@ export default function App() {
         <h2>Stale Data Demo</h2>
         <p className="stale-info">
           These counters should match, but they don't — a classic UI state mismatch.
+          In the session viewer, scrub the timeline to see the exact moment they diverge.
         </p>
         <div className="counters">
           <div className="counter">

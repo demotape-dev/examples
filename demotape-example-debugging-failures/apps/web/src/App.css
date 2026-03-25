@@ -99,6 +99,13 @@ header h1 {
   background: #2563eb;
 }
 
+.hint {
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
 /* Banners */
 .error-banner {
   background: #fef2f2;
