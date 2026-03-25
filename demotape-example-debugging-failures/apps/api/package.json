@@ -1,0 +1,9 @@
+{
+  "name": "demotape-example-debugging-failures-api",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}

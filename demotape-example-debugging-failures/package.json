@@ -1,0 +1,12 @@
+{
+  "name": "demotape-example-debugging-failures",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DemoTape example: Debugging failures with session replay",
+  "scripts": {
+    "setup": "cd apps/api && npm install && cd ../web && npm install",
+    "dev": "node scripts/dev.js",
+    "dev:api": "cd apps/api && node server.js",
+    "dev:web": "cd apps/web && npx vite"
+  }
+}

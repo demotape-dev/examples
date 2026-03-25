@@ -1,0 +1,8 @@
+{
+  "name": "demotape-example-location-rewrite",
+  "private": true,
+  "scripts": {
+    "setup": "cd apps/api && npm install && cd ../web && npm install",
+    "dev": "node scripts/dev.js"
+  }
+}

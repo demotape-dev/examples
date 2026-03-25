@@ -1,0 +1,8 @@
+{
+  "name": "demotape-example-auth-flow",
+  "private": true,
+  "scripts": {
+    "setup": "cd apps/api && npm install && cd ../web && npm install",
+    "dev": "node scripts/dev.js"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "demotape-example-react-vite-node",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DemoTape example: React (Vite) + Express API",
+  "scripts": {
+    "setup": "cd apps/api && npm install && cd ../web && npm install",
+    "dev": "node scripts/dev.js",
+    "dev:api": "cd apps/api && node server.js",
+    "dev:web": "cd apps/web && npx vite"
+  }
+}

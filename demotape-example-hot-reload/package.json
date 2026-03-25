@@ -1,0 +1,12 @@
+{
+  "name": "demotape-example-hot-reload",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "setup": "cd apps/web && npm install && cd ../api && npm install",
+    "dev": "node scripts/dev.js",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev"
+  }
+}
