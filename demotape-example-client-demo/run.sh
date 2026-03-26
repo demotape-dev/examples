@@ -6,5 +6,10 @@ cd "$(dirname "$0")"
 echo "==> Installing dependencies..."
 npm install
 
-echo "==> Starting dev server on :5173..."
-npm run dev
+trap 'kill 0' EXIT
+
+echo "==> Starting backend on :3001..."
+node server.js &
+
+echo "==> Starting frontend on :5173..."
+npx vite
