@@ -225,7 +225,9 @@ function TeamPage() {
   return (
     <>
       <h2 className="page-title">Team</h2>
-      <div className="table-card">
+
+      {/* Desktop table */}
+      <div className="table-card hide-mobile">
         <table className="data-table">
           <thead>
             <tr>
@@ -248,6 +250,23 @@ function TeamPage() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile cards */}
+      <div className="team-cards show-mobile">
+        {members.map((m) => (
+          <div className="team-card" key={m.id}>
+            <div className="team-card-header">
+              <span className="cell-name">{m.name}</span>
+              <span className="role-badge" data-role={m.role.toLowerCase()}>{m.role}</span>
+            </div>
+            <span className="cell-muted">{m.email}</span>
+            <div className="team-card-footer">
+              <span className={`status-indicator ${m.status.toLowerCase()}`}>{m.status}</span>
+              <span className="cell-muted">{m.lastSeen}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
@@ -317,6 +336,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [page, setPage] = useState('Overview');
   const [checking, setChecking] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     api('/me').then(setUser).catch(() => {}).finally(() => setChecking(false));
@@ -326,19 +346,35 @@ export default function App() {
     api('/logout', { method: 'POST' }).finally(() => setUser(null));
   }
 
+  function navigateTo(p) {
+    setPage(p);
+    setMenuOpen(false);
+  }
+
   if (checking) return null;
   if (!user) return <LoginPage onLogin={setUser} />;
 
   return (
     <div className="app">
-      <aside className="sidebar">
+      {/* Mobile header */}
+      <header className="mobile-header">
+        <div className="logo">Acme</div>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+          <span className={`hamburger ${menuOpen ? 'open' : ''}`} />
+        </button>
+      </header>
+
+      {/* Overlay for mobile menu */}
+      {menuOpen && <div className="sidebar-overlay" onClick={() => setMenuOpen(false)} />}
+
+      <aside className={`sidebar ${menuOpen ? 'open' : ''}`}>
         <div className="logo">Acme</div>
         <nav>
           {PAGES.map((p) => (
             <button
               key={p}
               className={`nav-item ${page === p ? 'active' : ''}`}
-              onClick={() => setPage(p)}
+              onClick={() => navigateTo(p)}
             >
               {p}
             </button>
